@@ -315,7 +315,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position' ] )
           // Make sure tooltip is destroyed and removed.
           scope.$on('$destroy', onDestroyTooltip);
           //listen to DOM destroy events as well (mostly for the append-to-body case)
-          element.on('$destroy', onDestroyTooltip);
+          element.bind('$destroy', onDestroyTooltip);
         }
       };
     };
