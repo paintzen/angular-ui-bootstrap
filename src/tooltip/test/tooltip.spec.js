@@ -213,14 +213,15 @@ describe('tooltip', function() {
 
   describe( 'with an append-to-body attribute', function() {
     var scope, elmBody, elm, elmScope;
+    var $body;
 
-    beforeEach( inject( function( $rootScope ) {
+    beforeEach( inject( function( $rootScope, $document ) {
       scope = $rootScope;
+      $body = $document.find( 'body' );
     }));
 
-    it( 'should append to the body', inject( function( $compile, $document ) {
-      $body = $document.find( 'body' );
-      elmBody = angular.element( 
+    it( 'should append to the body', inject( function( $compile ) {
+      elmBody = angular.element(
         '<div><span tooltip="tooltip text" tooltip-append-to-body="true">Selector Text</span></div>' 
       );
 
@@ -235,6 +236,25 @@ describe('tooltip', function() {
       expect( elmScope.tt_isOpen ).toBe( true );
       expect( elmBody.children().length ).toBe( 1 );
       expect( $body.children().length ).toEqual( bodyLength + 1 );
+    }));
+
+    it('should close tooltip if an element gets destroyed - issue 710', inject(function ($compile, $timeout) {
+
+      elmBody = angular.element(
+        '<div><span tooltip="tooltip text" tooltip-append-to-body="true">Selector Text</span></div>'
+      );
+
+      $compile(elmBody)(scope);
+      scope.$digest();
+      elm = elmBody.find('span');
+
+      var bodyLength = $body.children().length;
+      elm.trigger( 'mouseenter' );
+
+      elmBody.remove();
+      $timeout.flush();
+
+      expect( $body.children().length ).toEqual( bodyLength );
     }));
   });
 

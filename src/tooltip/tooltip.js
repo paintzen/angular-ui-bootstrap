@@ -251,6 +251,14 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position' ] )
             }
           }
 
+          function onDestroyTooltip() {
+            if ( scope.tt_isOpen ) {
+              hide();
+            } else {
+              tooltip.remove();
+            }
+          }
+
           /**
            * Observe the relevant attributes.
            */
@@ -305,13 +313,9 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position' ] )
           }
 
           // Make sure tooltip is destroyed and removed.
-          scope.$on('$destroy', function onDestroyTooltip() {
-            if ( scope.tt_isOpen ) {
-              hide();
-            } else {
-              tooltip.remove();
-            }
-          });
+          scope.$on('$destroy', onDestroyTooltip);
+          //listen to DOM destroy events as well (mostly for the append-to-body case)
+          element.on('$destroy', onDestroyTooltip);
         }
       };
     };
