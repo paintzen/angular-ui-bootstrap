@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy'); 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-html2js');
@@ -17,8 +17,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     ngversion: '1.0.5',
-    bsversion: '3.0.0-rc1',
-    faversion: '3.2.1',
+    bsversion: '2.3.1',
     modules: [],//to be filled in by build task
     pkg: grunt.file.readJSON('package.json'),
     dist: 'dist',
@@ -30,10 +29,6 @@ module.exports = function(grunt) {
       all: 'angular.module("ui.bootstrap", ["ui.bootstrap.tpls", <%= srcModules %>]);'
     },
     delta: {
-      docs: {
-        files: ['misc/demo/index.html', 'src/**/*.html'],
-        tasks: ['before-test', 'after-test']
-      },
       html: {
         files: ['template/**/*.html'],
         tasks: ['html2js', 'karma:watch:run']
@@ -41,7 +36,7 @@ module.exports = function(grunt) {
       js: {
         files: ['src/**/*.js'],
         //we don't need to jshint here, it slows down everything else
-        tasks: ['after-test', 'karma:watch:run']
+        tasks: ['karma:watch:run']
       }
     },
     concat: {
@@ -170,7 +165,7 @@ module.exports = function(grunt) {
       options: {
         dest: 'dist/docs',
         scripts: [
-          'angular.js',
+          'angular.js', 
           '<%= concat.dist_tpls.dest %>'
         ],
         styles: [
@@ -187,7 +182,7 @@ module.exports = function(grunt) {
     }
   });
 
-  //register before and after test tasks so we've don't have to change cli
+  //register before and after test tasks so we've don't have to change cli 
   //options on the goole's CI server
   grunt.registerTask('before-test', ['enforce', 'jshint', 'html2js']);
   grunt.registerTask('after-test', ['build', 'copy']);

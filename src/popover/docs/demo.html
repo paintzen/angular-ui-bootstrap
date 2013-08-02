@@ -2,52 +2,30 @@
   <div class="well">
     <div>
       <h4>Dynamic</h4>
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label class="control-label col-lg-2">Dynamic Popover</label>
-            <span class="col-lg-4">
-              <input type="text" class="form-control" ng-model="dynamicPopover">     
-            </span>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-lg-2">Dynamic Popover Title</label>
-            <span class="col-lg-4">
-              <input type="text" class="form-control" ng-model="dynamicPopoverTitle">     
-            </span>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-lg-2">Dynamic Popover Text</label>
-            <span class="col-lg-4">
-              <input type="text" class="form-control" ng-model="dynamicPopoverText">     
-            </span>
-        </div>
-      </form>
-
-      <div>
-          <button popover="{{dynamicPopover}}" popover-title="{{dynamicPopoverTitle}}" class="btn btn-default">{{dynamicPopoverText}}</button>
-      </div>
+      <div>Dynamic Popover : <input type="text" ng-model="dynamicPopoverText"></div>
+      <div>Dynamic Popover Popup Text: <input type="text" ng-model="dynamicPopover"></div>
+      <div>Dynamic Popover Popup Title: <input type="text" ng-model="dynamicPopoverTitle"></div>
+      <div><button popover="{{dynamicPopover}}" popover-title="{{dynamicPopoverTitle}}" class="btn">{{dynamicPopoverText}}</button></div>
     </div>
     <div>
       <h4>Positional</h4>
-      <button popover-placement="top" popover="On the Top!" class="btn btn-default">Top</button>
-      <button popover-placement="left" popover="On the Left!" class="btn btn-default">Left</button>
-      <button popover-placement="right" popover="On the Right!" class="btn btn-default">Right</button>
-      <button popover-placement="bottom" popover="On the Bottom!" class="btn btn-default">Bottom</button>
-      <button popover-placement="mouse" popover="relative to mouse" class="btn btn-default">Mouse</button>
+      <button popover-placement="top" popover="On the Top!" class="btn">Top</button>
+      <button popover-placement="left" popover="On the Left!" class="btn">Left</button>
+      <button popover-placement="right" popover="On the Right!" class="btn">Right</button>
+      <button popover-placement="bottom" popover="On the Bottom!" class="btn">Bottom</button>
+      <button popover-placement="mouse" popover="relative to mouse" class="btn">Mouse</button>
     </div>
     <div>
       <h4>Triggers</h4>
-      <button popover="I appeared on mouse enter!" popover-trigger="mouseenter" class="btn btn-default" btn-default>Mouseenter</button>
-      <span class="col-lg-4">
-        <input type="text" class="form-control" value="Click me!" 
-          popover="I appeared on focus! Click away and I'll vanish..." 
-          popover-trigger="focus" />  
-      </span>
+      <button popover="I appeared on mouse enter!" popover-trigger="mouseenter" class="btn">Mouseenter</button>
+      <input type="text" value="Click me!" 
+        popover="I appeared on focus! Click away and I'll vanish..." 
+        popover-trigger="focus" />
     </div>
     <div>
       <h4>Other</h4>
-      <button Popover-animation="true" popover="I fade in and out!" class="btn btn-default">fading</button>
-      <button popover="I have a title!" popover-title="The title." class="btn btn-default">title</button>
+      <button Popover-animation="true" popover="I fade in and out!" class="btn">fading</button>
+      <button popover="I have a title!" popover-title="The title." class="btn">title</button>
     </div>
   </div>
 </div>

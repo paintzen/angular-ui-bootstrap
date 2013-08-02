@@ -1,9 +1,9 @@
 <div ng-controller="ProgressDemoCtrl" class="well">
     <h2>Static</h2>
-    <div class="row">
-        <div class="col-lg-4"><progress percent="55"></progress></div>
-        <div class="col-lg-4"><progress percent="22" class="progress-bar-warning progress-striped"></progress></div>
-        <div class="col-lg-4"><progress percent="88" class="progress-bar-danger progress-striped active"></div>
+    <div class="row-fluid">
+        <div class="span4"><progress percent="55"></progress></div>
+        <div class="span4"><progress percent="22" class="progress-warning progress-striped"></progress></div>
+        <div class="span4"><progress percent="88" class="progress-danger progress-striped active"></div>
     </div>
     
     <h2>Dynamic <button class="btn btn-primary" type="button" ng-click="random()">Randomize</button></h2>

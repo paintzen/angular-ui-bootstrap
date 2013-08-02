@@ -3,22 +3,24 @@
     <slide ng-repeat="slide in slides" active="slide.active">
       <img ng-src="{{slide.image}}" style="margin:auto;">
       <div class="carousel-caption">
-        <h4>Slide {{$index + 1}}</h4>
+        <h4>Slide {{$index}}</h4>
         <p>{{slide.text}}</p>
       </div>
     </slide>
   </carousel>
-  <br>
-  <div class="row">
-    <div class="col-12">
-      <p>Interval, in milliseconds: <input type="number" ng-model="myInterval"></p>
-      <p>Enter a negative number to stop the interval.</p>
-      <ul class="nav nav-pills nav-stacked" style="margin: 20px 0;">
-        <li ng-repeat="slide in slides" ng-class="{active: slide.active}">
-          <a ng-click="slide.active = true">{{$index + 1}}: {{slide.text}}</a>
+  <div class="row-fluid">
+    <div class="span6">
+      <ul>
+        <li ng-repeat="slide in slides">
+          <button class="btn btn-mini" ng-class="{'btn-info': !slide.active, 'btn-success': slide.active}" ng-disabled="slide.active" ng-click="slide.active = true">select</button>
+          {{$index}}: {{slide.text}}
         </li>
       </ul>
-      <p><a class="btn btn-default" ng-click="addSlide()">Add Slide</a></p>
+      <a class="btn" ng-click="addSlide()">Add Slide</a>
+    </div>
+    <div class="span6">
+      Interval, in milliseconds: <input type="number" ng-model="myInterval">
+      <br />Enter a negative number to stop the interval.
     </div>
   </div>
 </div>

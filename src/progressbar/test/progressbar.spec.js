@@ -13,9 +13,9 @@ describe('progressbar directive with no binding', function () {
     expect(element.hasClass('progress')).toBe(true);
   });
 
-  it('contains one child element with "progress-bar" css class', function() {
+  it('contains one child element with "bar" css class', function() {
     expect(element.children().length).toBe(1);
-    expect(element.children().eq(0).hasClass('progress-bar')).toBe(true);
+    expect(element.children().eq(0).hasClass('bar')).toBe(true);
   });
 
   it('has a "bar" element with expected width', function() {
@@ -41,7 +41,7 @@ describe('progressbar directive with data-binding', function () {
 
   it('contains one child element with "bar" css class', function() {
     expect(element.children().length).toBe(1);
-    expect(element.children().eq(0).hasClass('progress-bar')).toBe(true);
+    expect(element.children().eq(0).hasClass('bar')).toBe(true);
   });
 
   it('has a "bar" element with expected width', function() {
@@ -53,7 +53,7 @@ describe('progressbar directive with data-binding', function () {
     $rootScope.$digest();
     expect(element.children().length).toBe(1);
     expect(element.children().eq(0).css('width')).toBe('55%');
-    expect(element.children().eq(0).hasClass('progress-bar')).toBe(true);
+    expect(element.children().eq(0).hasClass('bar')).toBe(true);
 
     $rootScope.percent += 11;
     $rootScope.$digest();
@@ -76,8 +76,8 @@ describe('progressbar directive with data-binding', function () {
 
     var barElement = element.children().eq(0);
     expect(barElement.css('width')).toBe('45%');
-    expect(barElement.hasClass('progress-bar')).toBe(true);
-    expect(barElement.hasClass('progress-bar-warning')).toBe(true);
+    expect(barElement.hasClass('bar')).toBe(true);
+    expect(barElement.hasClass('bar-warning')).toBe(true);
   });
 
 });
@@ -100,9 +100,9 @@ describe('stacked progressbar directive', function () {
 
   it('contains tree child elements with "bar" css class each', function() {
     expect(element.children().length).toBe(3);
-    expect(element.children().eq(0).hasClass('progress-bar')).toBe(true);
-    expect(element.children().eq(1).hasClass('progress-bar')).toBe(true);
-    expect(element.children().eq(2).hasClass('progress-bar')).toBe(true);
+    expect(element.children().eq(0).hasClass('bar')).toBe(true);
+    expect(element.children().eq(1).hasClass('bar')).toBe(true);
+    expect(element.children().eq(2).hasClass('bar')).toBe(true);
   });
 
   it('has a elements with expected width', function() {
@@ -131,7 +131,7 @@ describe('stacked progressbar directive', function () {
     expect(element.children().eq(1).css('width')).toBe('22%');
   });
 
-  it('can handle object changes correctly', function() {
+  it('can handle correctly object changes', function() {
     $rootScope.stacked[1] = {
       value: 29,
       type: 'danger'
@@ -144,18 +144,18 @@ describe('stacked progressbar directive', function () {
 
     barElement = element.children().eq(0);
     expect(barElement.css('width')).toBe('12%');
-    expect(barElement.hasClass('progress-bar')).toBe(true);
-    expect(barElement.hasClass('progress-bar-danger')).toBe(false);
+    expect(barElement.hasClass('bar')).toBe(true);
+    expect(barElement.hasClass('bar-danger')).toBe(false);
 
     barElement = element.children().eq(1);
     expect(barElement.css('width')).toBe('29%');
-    expect(barElement.hasClass('progress-bar')).toBe(true);
-    expect(barElement.hasClass('progress-bar-danger')).toBe(true);
+    expect(barElement.hasClass('bar')).toBe(true);
+    expect(barElement.hasClass('bar-danger')).toBe(true);
 
     barElement = element.children().eq(2);
     expect(barElement.css('width')).toBe('33%');
-    expect(barElement.hasClass('progress-bar')).toBe(true);
-    expect(barElement.hasClass('progress-bar-danger')).toBe(false);
+    expect(barElement.hasClass('bar')).toBe(true);
+    expect(barElement.hasClass('bar-danger')).toBe(false);
   });
 
   it('can handle mixed objects with custom classes', function() {
@@ -174,23 +174,23 @@ describe('stacked progressbar directive', function () {
 
     barElement = element.children().eq(0);
     expect(barElement.css('width')).toBe('15%');
-    expect(barElement.hasClass('progress-bar-info')).toBe(true);
+    expect(barElement.hasClass('bar-info')).toBe(true);
 
     barElement = element.children().eq(1);
     expect(barElement.css('width')).toBe('11%');
-    expect(barElement.hasClass('progress-bar-info')).toBe(false);
+    expect(barElement.hasClass('bar-info')).toBe(false);
 
     barElement = element.children().eq(2);
     expect(barElement.css('width')).toBe('9%');
-    expect(barElement.hasClass('progress-bar-danger')).toBe(true);
+    expect(barElement.hasClass('bar-danger')).toBe(true);
 
     barElement = element.children().eq(3);
     expect(barElement.css('width')).toBe('22%');
-    expect(barElement.hasClass('progress-bar-warning')).toBe(true);
+    expect(barElement.hasClass('bar-warning')).toBe(true);
 
     barElement = element.children().eq(4);
     expect(barElement.css('width')).toBe('5%');
-    expect(barElement.hasClass('progress-bar-warning')).toBe(false);
+    expect(barElement.hasClass('bar-warning')).toBe(false);
   });
 
 });
@@ -259,7 +259,7 @@ describe('stacked progressbar directive with auto-types', function () {
   it('contains tree child elements with "bar" css class each', function() {
     expect(element.children().length).toBe(5);
     for (var i = 0; i < 5; i++) {
-      expect(element.children().eq(i).hasClass('progress-bar')).toBe(true);
+      expect(element.children().eq(i).hasClass('bar')).toBe(true);
     }
   });
 
@@ -275,7 +275,7 @@ describe('stacked progressbar directive with auto-types', function () {
     var stackedTypes = config.stackedTypes;
 
     for (var i = 0; i < stackedTypes.length; i++) {
-      expect(element.children().eq(i).hasClass('progress-bar-' + stackedTypes[i])).toBe(true);
+      expect(element.children().eq(i).hasClass('bar-' + stackedTypes[i])).toBe(true);
     }
   });
 
@@ -290,8 +290,8 @@ describe('stacked progressbar directive with auto-types', function () {
 
     var bar = element.children().eq(1);
     expect(bar.css('width')).toBe('18%');
-    expect(bar.hasClass('progress-bar-' + stackedTypes[1])).toBe(false);
-    expect(bar.hasClass('progress-bar-something')).toBe(true);
+    expect(bar.hasClass('bar-' + stackedTypes[1])).toBe(false);
+    expect(bar.hasClass('bar-something')).toBe(true);
   });
 
 
@@ -306,8 +306,8 @@ describe('stacked progressbar directive with auto-types', function () {
 
     var bar = element.children().eq(1);
     expect(bar.css('width')).toBe('18%');
-    expect(bar.hasClass('progress-bar-' + stackedTypes[1])).toBe(false);
-    expect(bar.hasClass('progress-bar-something')).toBe(true);
+    expect(bar.hasClass('bar-' + stackedTypes[1])).toBe(false);
+    expect(bar.hasClass('bar-something')).toBe(true);
   });
 
   it('can bypass default configuration for stacked classes from attribute', function() {
@@ -316,11 +316,11 @@ describe('stacked progressbar directive with auto-types', function () {
 
     var stackedTypes = config.stackedTypes;
 
-    expect(element.children().eq(0).hasClass('progress-bar-danger')).toBe(true);
-    expect(element.children().eq(0).hasClass('progress-bar-' + stackedTypes[0])).toBe(false);
+    expect(element.children().eq(0).hasClass('bar-danger')).toBe(true);
+    expect(element.children().eq(0).hasClass('bar-' + stackedTypes[0])).toBe(false);
 
-    expect(element.children().eq(1).hasClass('progress-bar-warning')).toBe(true);
-    expect(element.children().eq(2).hasClass('progress-bar-success')).toBe(true);
+    expect(element.children().eq(1).hasClass('bar-warning')).toBe(true);
+    expect(element.children().eq(2).hasClass('bar-success')).toBe(true);
   });
 
 });

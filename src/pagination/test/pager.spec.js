@@ -12,7 +12,7 @@ describe('pager directive with default configuration', function () {
   }));
 
   it('has a "pager" css class', function() {
-    expect(element.find('ul').eq(0).hasClass('pager')).toBe(true);
+    expect(element.hasClass('pager')).toBe(true);
   });
 
   it('contains 2 li elements', function() {

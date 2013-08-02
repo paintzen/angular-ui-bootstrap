@@ -22,7 +22,7 @@ describe('rating directive', function () {
     var stars = getStars();
     var state = [];
     for (var i = 0, n = stars.length; i < n; i++) {
-      state.push( (stars.eq(i).hasClass('glyphicon-star') && ! stars.eq(i).hasClass('glyphicon-star-empty')) );
+      state.push( (stars.eq(i).hasClass('icon-star') && ! stars.eq(i).hasClass('icon-star-empty')) );
     }
     return state;
   }

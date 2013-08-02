@@ -132,7 +132,7 @@ describe('Given ui.bootstrap.dialog', function(){
 			});
 
 			it('the modal should be change', function(){
-				expect($document.find('body > div.modala dialog-backdrop.fade').length).toBe(1);
+				expect($document.find('body > div.modal-backdrop.fade').length).toBe(1);
 			});
 		});*/
 	});
@@ -238,20 +238,10 @@ describe('Given ui.bootstrap.dialog', function(){
 		beforeEach(function(){
 			createDialog({template:'foo'});
 			openDialog();
-			$document.find('body > div.modal').click();
+			$document.find('body > div.modal-backdrop').click();
 		});
 
 		dialogShouldBeClosed();
-	});
-    
-	describe('when clicking a dialog content when backdrop close is true', function(){
-		beforeEach(function(){
-			createDialog({template:'foo'});
-			openDialog();
-			$document.find('body > div.modal > div.modal-dialog > div.modal-content').click();
-		});
-
-		dialogShouldBeOpen();
 	});
 
 	describe('when closing a dialog with escape key', function(){
@@ -295,7 +285,7 @@ describe('Given ui.bootstrap.dialog', function(){
 		});
 
 		it('should use the specified template', function(){
-			expect($document.find('body > div.modal > div.modal-dialog > div.modal-content > div.modal-header').length).toBe(1);
+			expect($document.find('body > div.modal > div.modal-header').length).toBe(1);
 		});
 	});
 

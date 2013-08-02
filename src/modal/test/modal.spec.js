@@ -69,7 +69,7 @@ describe('Give ui.boostrap.modal', function() {
 		elm = $compile(templateGenerator('hello()', ' ', 'baz=0'))($scope);
 		$scope.$apply();
 		expect($document.find('body > div.modal').length).toBe(1);
-		$document.find('body > div.modal').click();
+		$document.find('body > div.modal-backdrop').click();
 		expect($document.find('body > div.modal').length).toBe(0);
 		expect($scope.baz).toBe(0);
 	});
@@ -93,7 +93,7 @@ describe('Give ui.boostrap.modal', function() {
 		$scope.modalShown = true;
 		$scope.$apply();
 		expect($document.find('body > div.modal').length).toBe(1);
-		$document.find('body > div.modal').click();
+		$document.find('body > div.modal-backdrop').click();
 		expect($document.find('body > div.modal').length).toBe(1);
 		$scope.$apply('modalShown = false');
 	});
@@ -155,7 +155,7 @@ describe('Give ui.boostrap.modal', function() {
 		});
 
 		it('should update the model if the backdrop is clicked', function() {
-			$document.find('body > div.modal').click();
+			$document.find('body > div.modal-backdrop').click();
 			$scope.$digest();
 			expect($scope.modalShown).not.toBeTruthy();
 		});

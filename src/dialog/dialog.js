@@ -88,11 +88,9 @@ dialogModule.provider("$dialog", function(){
       };
 
       this.handleBackDropClick = function(e) {
-        if (e.target === e.currentTarget) {
-            self.close();
-            e.preventDefault();
-            self.$scope.$apply();
-        }
+        self.close();
+        e.preventDefault();
+        self.$scope.$apply();
       };
     }
 
@@ -120,14 +118,7 @@ dialogModule.provider("$dialog", function(){
       this._loadResolves().then(function(locals) {
         var $scope = locals.$scope = self.$scope = locals.$scope ? locals.$scope : $rootScope.$new();
 
-        self.modalEl.css('display', 'block');
         self.modalEl.html(locals.$template);
-        
-        // fade in classes must both be present, if we don't fade, add them before they hit the dom
-        if (!self.options.backdropFade) {
-              self.backdropEl.addClass(self.options.transitionClass); 
-              self.backdropEl.addClass(self.options.triggerClass); 
-        }
 
         if (self.options.controller) {
           var ctrl = $controller(self.options.controller, locals);
@@ -189,12 +180,12 @@ dialogModule.provider("$dialog", function(){
 
     Dialog.prototype._bindEvents = function() {
       if(this.options.keyboard){ body.bind('keydown', this.handledEscapeKey); }
-      if(this.options.backdrop && this.options.backdropClick){ this.modalEl.bind('click', this.handleBackDropClick); }
+      if(this.options.backdrop && this.options.backdropClick){ this.backdropEl.bind('click', this.handleBackDropClick); }
     };
 
     Dialog.prototype._unbindEvents = function() {
       if(this.options.keyboard){ body.unbind('keydown', this.handledEscapeKey); }
-      if(this.options.backdrop && this.options.backdropClick){ this.modalEl.unbind('click', this.handleBackDropClick); }
+      if(this.options.backdrop && this.options.backdropClick){ this.backdropEl.unbind('click', this.handleBackDropClick); }
     };
 
     Dialog.prototype._onCloseComplete = function(result) {

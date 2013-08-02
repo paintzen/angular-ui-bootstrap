@@ -1,9 +1,7 @@
 function DialogDemoCtrl($scope, $dialog){
 
   // Inlined template for demo
-  var t = '<div class="modal-dialog">'+
-          '<div class="modal-content">'+
-          '<div class="modal-header">'+
+  var t = '<div class="modal-header">'+
           '<h3>This is the title</h3>'+
           '</div>'+
           '<div class="modal-body">'+
@@ -11,7 +9,7 @@ function DialogDemoCtrl($scope, $dialog){
           '</div>'+
           '<div class="modal-footer">'+
           '<button ng-click="close(result)" class="btn btn-primary" >Close</button>'+
-          '</div></div></div>';
+          '</div>';
 
   $scope.opts = {
     backdrop: true,
