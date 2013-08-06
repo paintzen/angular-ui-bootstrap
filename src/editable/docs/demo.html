@@ -1,0 +1,12 @@
+<div ng-controller="EditableDemoCtrl">
+
+	I am <a href="" ng-model="$parent.editableText" editable>{{ text }}</a>!
+	<hr>
+	Hey I'm pretty <a href="" ng-model="$parent.editableArray" source="arrayOpts" type="select" editable>{{ array }}</a> too!
+	<hr>
+	I'm even <a href="" ng-model="$parent.editableObject" source="objectOpts" type="select" editable>{{ object }}</a>!
+	<hr>
+	<pre>Text: {{ editableText }}</pre>
+	<pre>Array: {{ editableArray }}</pre>
+	<pre>Object: {{ editableObject }}</pre>
+</div>
